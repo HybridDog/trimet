@@ -231,7 +231,11 @@ minetest.register_entity("trimet:violet",{
 			if not son.get_luaentity then
 				return
 			end
-			local follower = son:get_luaentity().sister
+			local ent = son:get_luaentity()
+			if not ent then
+				return
+			end
+			local follower = ent.sister
 			if not follower then
 				son:remove()
 				minetest.log("error", "[trimet] missing son")
