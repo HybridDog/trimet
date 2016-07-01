@@ -1,7 +1,7 @@
 local load_time_start = os.clock()
 
 local formspec = ""
-for _,i in pairs({"x", "y", "z"}) do
+for _,i in pairs{"x", "y", "z"} do
 	local min = "min"..i
 	formspec = formspec.."field["..min..";"..min..";${"..min.."}]"
 	local max = "max"..i
@@ -37,14 +37,14 @@ minetest.register_node("trimet:trimet", {
 		for i = 1,3 do
 			sons[i] = minetest.add_entity(pos, "trimet:violet")
 			if not sons[i] then
-				error("can't add entity")
+				error"can't add entity"
 			end
 		end
 		attachpos = nil
 		local minp = {}
 		local maxp = {}
 		local meta = minetest.get_meta(pos)
-		for _,i in pairs({"x", "y", "z"}) do
+		for _,i in pairs{"x", "y", "z"} do
 			minp[i] = meta:get_int("min"..i)
 			maxp[i] = meta:get_int("max"..i)
 		end
@@ -87,7 +87,7 @@ minetest.register_node("trimet:trimet", {
 		local maxp = {}
 		minp.x, minp.y, minp.z, maxp.x, maxp.y, maxp.z = unpack(coords)
 		local meta = minetest.get_meta(pos)
-		for _,i in pairs({"x", "y", "z"}) do
+		for _,i in pairs{"x", "y", "z"} do
 			meta:set_int("min"..i, minp[i])
 			meta:set_int("max"..i, maxp[i])
 		end
